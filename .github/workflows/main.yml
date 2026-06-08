@@ -28,3 +28,8 @@ jobs:
           context: .
           push: true
           tags: ssteevooh/devops-with-docker-pipeline
+
+      - name: Trigger Render deploy
+        run: curl "$RENDER_DEPLOY_HOOK_URL"
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
